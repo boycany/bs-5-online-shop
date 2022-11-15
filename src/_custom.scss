@@ -1,1 +1,56 @@
+/*
+    import 順序：
+    functions --> variables --> bootstrap
+*/
+
+@import "../node_modules/bootstrap/scss/functions";
+
+$primary: #fb5830;
+$secondary: #d0021c;
+$input-font-size: 0.8rem;
+
+@import "../node_modules/bootstrap/scss/variables";
+
+// 去找 import 的 variables 的檔案，會發現：
+// $font-size 變數原本只有 1~6，所以在這擴充一個 7
+// $font-size-base: 預設為 1 rem
+$font-sizes: map-merge(
+    $font-sizes,
+    (
+        7: $font-size-base * 0.8,
+    )
+);
+
+@import "../node_modules/bootstrap/scss/maps";
+
+$utilities-bg-colors: map-merge(
+    $utilities-bg-colors,
+    (
+        "line": #f97160,
+    )
+);
+
+@import "../node_modules/bootstrap/scss/utilities";
+
+//自定義 w-2px, w-50px
+$utilities: map-merge(
+    $utilities,
+    (
+        "width":
+            map-merge(
+                map-get($utilities, "width"),
+                (
+                    responsive: true,
+                    values:
+                        map-merge(
+                            map-get(map-get($utilities, "width"), "values"),
+                            (
+                                "50px": 50px,
+                                "2px": 2px,
+                            )
+                        ),
+                )
+            ),
+    )
+);
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
