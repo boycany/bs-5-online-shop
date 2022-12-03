@@ -11,6 +11,7 @@
 <body>
     <nav class="navbar navbar-expand-lg text-white bg-primary pb-3 pb-md-0">
         <div class="container-md flex-column">
+            <!-- 上層連結列 -->
             <div class="d-flex justify-content-between w-100 fs-7">
                 <div class="d-flex">
                     <span class="me-2">賣家中心</span>
@@ -23,6 +24,7 @@
                     <span class="ms-2">登出</span>
                 </div>
             </div>
+            <!-- 下層搜尋列 -->
             <div class="w-100 d-flex flex-wrap my-md-3">
                 <a class="navbar-brand text-white d-flex flex-shrink-0 align-items-center my-2 my-md-0" href="#">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -44,7 +46,7 @@
                         </svg>
                     </button>
                     <button
-                        class="btn flex-shrink-0  w-50px d-flex justify-content-center align-items-center me-2 shadow-none text-white"
+                        class="btn flex-shrink-0  w-50px d-flex justify-content-center align-items-center me-0 shadow-none text-white"
                         type="button" id="cart-btn">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                             class="bi bi-cart-plus" viewBox="0 0 16 16">
@@ -57,9 +59,9 @@
                 </div>
 
             </div>
-
         </div>
     </nav>
+    <!-- 輪播 -->
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
@@ -90,6 +92,117 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
+    </div>
+    <!-- 商品條件篩選 -->
+    <div class="container-md">
+        <div class="row">
+            <!-- 電腦版 篩選區 -->
+            <div class="col-2 d-none d-md-block">
+                filter
+            </div>
+            <div class="col">
+                <div class="d-flex justify-content-between align-items-center h-80px">
+                    <div class="text-gray-700 fw-bold d-flex align-items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                            class="bi bi-lightbulb me-1 mb-1" viewBox="0 0 16 16">
+                            <path
+                                d="M2 6a6 6 0 1 1 10.174 4.31c-.203.196-.359.4-.453.619l-.762 1.769A.5.5 0 0 1 10.5 13a.5.5 0 0 1 0 1 .5.5 0 0 1 0 1l-.224.447a1 1 0 0 1-.894.553H6.618a1 1 0 0 1-.894-.553L5.5 15a.5.5 0 0 1 0-1 .5.5 0 0 1 0-1 .5.5 0 0 1-.46-.302l-.761-1.77a1.964 1.964 0 0 0-.453-.618A5.984 5.984 0 0 1 2 6zm6-5a5 5 0 0 0-3.479 8.592c.263.254.514.564.676.941L5.83 12h4.342l.632-1.467c.162-.377.413-.687.676-.941A5 5 0 0 0 8 1z" />
+                        </svg>
+                        <div class="text-primary me-1">氣炸鍋</div>
+                        的搜尋結果
+                    </div>
+                    <!-- flex-shrink-0: 讓這個 btn 最多被擠壓到 50px 就不要再被壓小了 -->
+                    <button class="
+                            btn
+                            flex-shrink-0
+                            w-50px
+                            d-flex
+                            justify-content-center
+                            align-items-center
+                            d-md-none
+                            shadow-none
+                            text-primary" type="button" id="mobile-filter-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                            class="bi bi-filter" viewBox="0 0 16 16">
+                            <path
+                                d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- 手機版篩選區 offcanvas -->
+        <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasScrolling" data-bs-scroll="true"
+            data-bs-backdrop="false" aria-labelledby="offcanvasScrollingLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title d-flex align-items-center" id="offcanvasScrollingLabel">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                        class="bi bi-funnel me-1" viewBox="0 0 16 16">
+                        <path
+                            d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z" />
+                    </svg>
+                    條件篩選
+                </h5>
+                <button type="button" class="btn-close text-reset shadow-none" data-bs-dismiss="offcanvas"
+                    aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <p class="fw-bold">分類</p>
+                <div class="form-check mb-2">
+                    <input type="checkbox" class="form-check-input" id="offcanvas-check1" />
+                    <label class="form-check-label fs-7" for="offcanvas-check1">家電類</label>
+                </div>
+                <div class="form-check mb-2">
+                    <input type="checkbox" class="form-check-input" id="offcanvas-check2" />
+                    <label class="form-check-label fs-7" for="offcanvas-check2">食物類</label>
+                </div>
+                <div class="form-check mb-2">
+                    <input type="checkbox" class="form-check-input" id="offcanvas-check3" />
+                    <label class="form-check-label fs-7" for="offcanvas-check3">清潔類</label>
+                </div>
+                <div class="form-check mb-2">
+                    <input type="checkbox" class="form-check-input" id="offcanvas-check4" />
+                    <label class="form-check-label fs-7" for="offcanvas-check4">遊戲類</label>
+                </div>
+                <div class="collapse" id="filter-mobile-collapse">
+                    <div class="form-check mb-2">
+                        <input type="checkbox" class="form-check-input" id="offcanvas-check5" />
+                        <label class="form-check-label fs-7" for="offcanvas-check5">居家生活類</label>
+                    </div>
+                    <div class="form-check mb-2">
+                        <input type="checkbox" class="form-check-input" id="offcanvas-check6" />
+                        <label class="form-check-label fs-7" for="offcanvas-check6">運動用品類</label>
+                    </div>
+                </div>
+                <p class="d-flex align-items-center" id="filter-mobile-collapse-btn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-caret-down-fill me-2 transition-transform" viewBox="0 0 16 16"
+                        id="filter-mobile-icon">
+                        <path
+                            d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                    </svg>
+                    <span id="filter-mobile-btn-text" class="fs-7">顯示更多</span>
+                </p>
+                <hr class="w-75">
+                <p class="fw-bold">出貨地點</p>
+                <div class="form-check mb-2">
+                    <input type="checkbox" class="form-check-input" id="offcanvas-check7" />
+                    <label class="form-check-label fs-7" for="offcanvas-check7">國內</label>
+                </div>
+                <div class="form-check mb-2">
+                    <input type="checkbox" class="form-check-input" id="offcanvas-check8" />
+                    <label class="form-check-label fs-7" for="offcanvas-check8">海外</label>
+                </div>
+                <hr class="w-75">
+                <p class="fw-bold">價格範圍</p>
+                <div class="d-flex align-items-center">
+                    <input type="text" class="form-control me-2 fs-7" placeholder="最低價">
+                    <hr class="w-50px me-2">
+                    <input type="text" class="form-control fs-7" placeholder="最高價">
+                </div>
+                <button type="button" class="btn btn-primary text-white w-100 mt-3 fs-7 shadow-none">套用</button>
+            </div>
+        </div>
     </div>
 </body>
 

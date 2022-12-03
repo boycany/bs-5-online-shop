@@ -23,6 +23,13 @@ $font-sizes: map-merge(
 
 @import "../node_modules/bootstrap/scss/maps";
 
+$utilities-text-colors: map-merge(
+    $utilities-text-colors,
+    (
+        "gray-700": $gray-700,
+    )
+);
+
 $utilities-bg-colors: map-merge(
     $utilities-bg-colors,
     (
@@ -51,6 +58,43 @@ $utilities: map-merge(
                         ),
                 )
             ),
+        "height":
+            map-merge(
+                map-get($utilities, "height"),
+                (
+                    responsive: true,
+                    values:
+                        map-merge(
+                            map-get(map-get($utilities, "height"), "values"),
+                            (
+                                "80px": 80px,
+                            )
+                        ),
+                )
+            ),
+        "cursor": (
+            responsive: true,
+            property: cursor,
+            class: cursor,
+            values: pointer,
+        ),
+        "transform": (
+            responsive: true,
+            property: transform,
+            values: (
+                rotate-180: rotate(180deg),
+                //transform-rotate-180 的 class
+            ),
+        ),
+        "transition": (
+            responsive: true,
+            property: transition,
+            values: (
+                transform: transform 0.2s,
+                //transition-transform 的 class
+            ),
+        ),
     )
 );
+
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
