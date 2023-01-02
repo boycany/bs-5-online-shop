@@ -4,6 +4,28 @@ import "bootstrap/js/dist/carousel";
 import Collapse from "bootstrap/js/dist/collapse";
 import Offcanvas from "bootstrap/js/dist/offcanvas";
 
+function collapsePCHandler() {
+    const collapse = document.getElementById('filter-collapse')
+    const collapseBtn = document.getElementById('filter-collapse-btn')
+    const collapseBtnText = document.getElementById('filter-btn-text')
+    const filterIcon = document.getElementById('filter-icon')
+
+    const bsCollapse = new Collapse(collapse, {
+        toggle: false
+    })
+    collapseBtn.addEventListener('click', function(){
+        bsCollapse.toggle()
+    })
+    collapse.addEventListener('show.bs.collapse', function(){
+        collapseBtnText.innerText = '收起'
+        filterIcon.classList.add('transform-rotate-180')
+    })
+    collapse.addEventListener('hide.bs.collapse', function(){
+        collapseBtnText.innerText = "顯示更多";
+        filterIcon.classList.add("transform-rotate-180");
+    })
+}
+
 function collapseMobileHandler() {
     const collapseMobile = document.getElementById("filter-mobile-collapse");
     const collapseBtnMobile = document.getElementById(
@@ -43,5 +65,6 @@ function offcanvasHandler() {
     });
 }
 
+collapsePCHandler()
 collapseMobileHandler();
 offcanvasHandler();
