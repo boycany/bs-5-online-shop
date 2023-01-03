@@ -3,27 +3,54 @@ import "bootstrap/js/dist/carousel";
 // import "bootstrap/js/dist/offcanvas";
 import Collapse from "bootstrap/js/dist/collapse";
 import Offcanvas from "bootstrap/js/dist/offcanvas";
+import Modal from "bootstrap/js/dist/modal";
+
+function renderItems() {
+    const list = document.getElementById("list");
+
+    for (let i = 0; i < 10; i++) {
+        const col = document.createElement("div");
+        col.classList.add("col");
+        col.innerHTML = `
+            <div class="mt-4">
+                <div class="card">
+                    <img src="https://bruce-fe-ec.web.app/images/item.png" alt="item"
+                        class="card-img-top" />
+                    <div class="card-body p-2">
+                        <h5 class="card-title text-primary">$2000</h5>
+                        <p class="card-text fs-7">
+                            精華保濕沐浴乳
+                        </p>
+                        <p class="card-text text-end fs-8">已售出 1000</p>
+                    </div>
+                    <span class="badge bg-primary position-absolute top-0 end-0">雙11優惠</span>
+                </div>
+            </div>
+        `;
+        list.appendChild(col);
+    }
+}
 
 function collapsePCHandler() {
-    const collapse = document.getElementById('filter-collapse')
-    const collapseBtn = document.getElementById('filter-collapse-btn')
-    const collapseBtnText = document.getElementById('filter-btn-text')
-    const filterIcon = document.getElementById('filter-icon')
+    const collapse = document.getElementById("filter-collapse");
+    const collapseBtn = document.getElementById("filter-collapse-btn");
+    const collapseBtnText = document.getElementById("filter-btn-text");
+    const filterIcon = document.getElementById("filter-icon");
 
     const bsCollapse = new Collapse(collapse, {
-        toggle: false
-    })
-    collapseBtn.addEventListener('click', function(){
-        bsCollapse.toggle()
-    })
-    collapse.addEventListener('show.bs.collapse', function(){
-        collapseBtnText.innerText = '收起'
-        filterIcon.classList.add('transform-rotate-180')
-    })
-    collapse.addEventListener('hide.bs.collapse', function(){
+        toggle: false,
+    });
+    collapseBtn.addEventListener("click", function () {
+        bsCollapse.toggle();
+    });
+    collapse.addEventListener("show.bs.collapse", function () {
+        collapseBtnText.innerText = "收起";
+        filterIcon.classList.add("transform-rotate-180");
+    });
+    collapse.addEventListener("hide.bs.collapse", function () {
         collapseBtnText.innerText = "顯示更多";
         filterIcon.classList.add("transform-rotate-180");
-    })
+    });
 }
 
 function collapseMobileHandler() {
@@ -65,6 +92,35 @@ function offcanvasHandler() {
     });
 }
 
-collapsePCHandler()
+function searchHandler() {
+    const searchBtn = document.getElementById("search-btn");
+    const itemWrapper = document.getElementById("items-wrapper");
+    const spinnerWrapper = document.getElementById("spinner-wrapper");
+
+    searchBtn.addEventListener("click", function () {
+        itemWrapper.classList.add("d-none");
+        spinnerWrapper.classList.remove("d-none");
+
+        setTimeout(function () {
+            itemWrapper.classList.remove("d-none");
+            spinnerWrapper.classList.add("d-none");
+        }, 1500);
+    });
+}
+
+function modalHandler() {
+    const cartBtn = document.getElementById("cart-btn");
+    const cart = new Modal(document.getElementById("cart"), {
+        keyboard: false,
+    });
+    cartBtn.addEventListener("click", function () {
+        cart.toggle();
+    });
+}
+
+collapsePCHandler();
 collapseMobileHandler();
 offcanvasHandler();
+renderItems();
+searchHandler();
+modalHandler();
